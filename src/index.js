@@ -1,11 +1,14 @@
-import './component/nav-bar.js';
+/* eslint-disable no-console */
+/* eslint-disable eqeqeq */
+/* eslint-disable no-undef */
+import './component/nav-bar';
 import './style/style.css';
 
-let searchBtn = document.getElementById("search-btn");
-let countryInp = document.getElementById("country-inp");
-searchBtn.addEventListener("click", () => {
-  let countryName = countryInp.value;
-  let finalURL = `https://restcountries.com/v3.1/name/${countryName}?fullText=true`;
+const searchBtn = document.getElementById('search-btn');
+const countryInp = document.getElementById('country-inp');
+searchBtn.addEventListener('click', () => {
+  const countryName = countryInp.value;
+  const finalURL = `https://restcountries.com/v3.1/name/${countryName}?fullText=true`;
   console.log(finalURL);
   fetch(finalURL)
     .then((response) => response.json())
@@ -35,26 +38,26 @@ searchBtn.addEventListener("click", () => {
             <div class="data-wrapper">
                 <h4>Currency:</h4>
                 <span>${
-                  data[0].currencies[Object.keys(data[0].currencies)].name
-                } - ${Object.keys(data[0].currencies)[0]}</span>
+  data[0].currencies[Object.keys(data[0].currencies)].name
+} - ${Object.keys(data[0].currencies)[0]}</span>
             </div>
         </div>
          <div class="wrapper">
             <div class="data-wrapper">
                 <h4>Common Languages:</h4>
                 <span>${Object.values(data[0].languages)
-                  .toString()
-                  .split(",")
-                  .join(", ")}</span>
+    .toString()
+    .split(',')
+    .join(', ')}</span>
             </div>
         </div>
       `;
     })
     .catch(() => {
       if (countryName.length == 0) {
-        result.innerHTML = `<h3>The input field can't be empty</h3>`;
+        result.innerHTML = '<h3>The input field can\'t be empty</h3>';
       } else {
-        result.innerHTML = `<h3>Please enter a valid country name.</h3>`;
+        result.innerHTML = '<h3>Please enter a valid country name.</h3>';
       }
     });
 });
